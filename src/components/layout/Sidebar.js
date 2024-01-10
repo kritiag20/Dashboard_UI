@@ -17,10 +17,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const pathanme = location?.pathname?.replace(/^\/+/, "");
+  const pathanme = location?.pathname;
 
-  const handleNavigation = (link, name) => {
+  const handleNavigation = (name) => {
+    let link = name?.toLowerCase();
     navigate(`/${link}`, { state: { name: name } });
+  };
+
+  const isMenuItemActive = (link) => {
+    if (link?.includes(pathanme)) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -42,9 +50,9 @@ function Sidebar() {
         <List className="list_wrap">
           {menuList.map((menu) => (
             <ListItem
-              onClick={() => handleNavigation(menu?.link, menu?.name)}
+              onClick={() => handleNavigation(menu?.name)}
               className={
-                pathanme === menu?.link ? "menu_item active" : "menu_item"
+                isMenuItemActive(menu?.link) ? "menu_item active" : "menu_item"
               }
               key={menu.id}
             >
