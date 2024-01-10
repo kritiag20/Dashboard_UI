@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./assets/style/header.css";
+import "./assets/style/layout.css";
+import "./assets/main.css";
+import Main from "./components/layout/Main";
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CommonPage from "./components/pages/CommonPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {/* <Main /> */}
+
+      <div className="App">
+        <Router>
+          <Header />
+          <Sidebar />
+          <Routes>
+            <Route exact path="/" element={<Main />} />
+            <Route exact path="/payments" element={<Main />} />
+            <Route exact path="/*" element={<CommonPage />} />
+          </Routes>
+        </Router>
+      </div>
+    </React.Fragment>
   );
 }
 

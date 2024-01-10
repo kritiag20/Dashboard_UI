@@ -1,0 +1,27 @@
+.flex{
+    display: flex;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.justify-start{
+    display: flex;
+    justify-content: left;
+}
+.justify-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.commonPage{
+    height: calc(100vh - 65px);
+    padding: 50px 0;
+    font-size: 32px;
+}
