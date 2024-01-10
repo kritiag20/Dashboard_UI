@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -6,6 +6,12 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 function Overview() {
+  const [selectedMonth, setselectedMonth] = useState("Last Month");
+
+  const handleMonth = (e) => {
+    setselectedMonth(e.target.value);
+  };
+
   return (
     <Box className="flex-col" gap={"24px"}>
       <Box className="flex center justify-between">
@@ -14,13 +20,13 @@ function Overview() {
           <Select
             labelId="demo-select-small-label"
             id="demo-select-small"
-            value={"Last Month"}
+            value={selectedMonth}
             defaultValue="Last Month"
             label="Month"
+            onChange={handleMonth}
+            className="select_month"
+            placeholder="Select"
           >
-            <MenuItem value="">
-              <em>Select</em>
-            </MenuItem>
             <MenuItem value={"Last Month"}>Last Month</MenuItem>
             <MenuItem value={"Current Month"}>Current Month</MenuItem>
           </Select>

@@ -156,3 +156,9 @@
 .MuiInputBase-adornedStart{
     padding-left: 0 !important;
 }
+
+.select_month{
+    width: 100%;
+    display: flex;
+    text-align: justify;
+}
